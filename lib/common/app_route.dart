@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../ui/home/home_page.dart';
 import '../ui/login/login_page.dart';
+import '../ui/splash/splash_page.dart';
 
 class AppRoute {
   static final GlobalKey<NavigatorState> navigatorKey =
@@ -22,6 +23,15 @@ class AppRoute {
       return const LoginPage();
     },
   };
+
+  static Route<dynamic>? onUnknownRoute(RouteSettings settings) {
+    return MaterialPageRoute(
+      builder: (BuildContext context) {
+        return const SplashPage();
+      },
+      settings: settings,
+    );
+  }
 
   static Future<T?> to<T extends Object?>(
     Route<T> route,
@@ -124,8 +134,7 @@ class AppRoute {
     return messenger.clearMaterialBanners();
   }
 
-  static ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason>
-      banner({
+  static ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> banner({
     MaterialBanner? banner,
     String? content,
     String? label,

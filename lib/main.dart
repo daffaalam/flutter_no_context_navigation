@@ -17,6 +17,7 @@ class MainApp extends StatelessWidget {
       scaffoldMessengerKey: AppRoute.messengerKey,
       home: const SplashPage(),
       routes: AppRoute.routes,
+      onUnknownRoute: AppRoute.onUnknownRoute,
     );
   }
 }
